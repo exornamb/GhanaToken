@@ -35,3 +35,33 @@ def load_twi_only_tokenizers() -> dict:
         print(f"Loading {short_name} ({hf_name}) ...")
         tokenizers[short_name] = AutoTokenizer.from_pretrained(hf_name)
     return tokenizers
+
+
+def analyze_sentence(tokenizer, sentence: str) -> dict:
+    """
+    Measures tokenization efficiency for one sentence, word by word.
+    This word-by-word approach matches how token fertility is measured
+    in the tokenizer fairness literature (for example Petrov et al. 2023
+    and Ahia et al. 2023): each whitespace-separated word is encoded on
+    its own, so the fertility score reflects how the vocabulary handles
+    that specific word, not accidental merges across word boundaries.
+    """
+    words = sentence.strip().split()
+    n_words = len(words)
+    n_chars = len(sentence)
+    total_subword_tokens = 0
+    words_split_into_multiple = 0
+    for word in words:
+        token_ids = tokenizer.encode(word, add_special_tokens=False)
+        n_subtokens = len(token_ids)
+        total_subword_tokens += n_subtokens
+        if n_subtokens > 1:
+            words_split_into_multiple += 1
+    return {
+        "n_words": n_words,
+        "n_chars": n_chars,
+        "n_tokens": total_subword_tokens,
+        "tokens_per_word": total_subword_tokens / n_words if n_words else 0.0,
+        "tokens_per_char": total_subword_tokens / n_chars if n_chars else 0.0,
+        "pct_words_split": (words_split_into_multiple / n_words * 100) if n_words else 0.0,
+    }
