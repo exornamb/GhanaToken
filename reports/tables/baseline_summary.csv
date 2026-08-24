@@ -1,0 +1,8 @@
+language,tokenizer,mean_fertility,mean_tokens_per_char,mean_pct_words_split,n_sentences
+ewe,AfroXLMR,2.625,0.506,71.37,3000
+ewe,XLM-R,2.625,0.506,71.37,3000
+ewe,mBERT,2.303,0.445,64.662,3000
+twi,ABENA,2.402,0.475,71.707,3000
+twi,AfroXLMR,2.438,0.483,70.128,3000
+twi,XLM-R,2.438,0.483,70.128,3000
+twi,mBERT,2.371,0.469,69.958,3000
