@@ -1,8 +1,7 @@
-"""
-src/tokenizer_benchmark.py
-Loads the baseline multilingual tokenizers and measures tokenization
-efficiency on Twi and Ewe sentences.
-"""
+from pathlib import Path
+import random
+import pandas as pd
+from tqdm import tqdm
 from transformers import AutoTokenizer
 
 BASELINE_TOKENIZERS = {
@@ -65,3 +64,23 @@ def analyze_sentence(tokenizer, sentence: str) -> dict:
         "tokens_per_char": total_subword_tokens / n_chars if n_chars else 0.0,
         "pct_words_split": (words_split_into_multiple / n_words * 100) if n_words else 0.0,
     }
+
+
+def run_benchmark(tokenizers: dict, sentences: list, language: str,
+                  sample_size: int = 3000, seed: int = 42) -> pd.DataFrame:
+    """
+    Runs every tokenizer over a balanced sample of sentences for one
+    language and returns one row per sentence per tokenizer.
+    """
+    random.seed(seed)
+    if len(sentences) > sample_size:
+        sentences = random.sample(sentences, sample_size)
+    rows = []
+    for name, tok in tokenizers.items():
+        for sentence in tqdm(sentences, desc=f"{language} / {name}"):
+            metrics = analyze_sentence(tok, sentence)
+            metrics["tokenizer"] = name
+            metrics["language"] = language
+            rows.append(metrics)
+    return pd.DataFrame(rows)
+
