@@ -28,7 +28,7 @@ def load_tokenizers() -> dict:
 
 
 def load_twi_only_tokenizers() -> dict:
-    """Loads bonus tokenizers that only support Twi, such as ABENA."""
+    """Loads language-specific tokenizers that only support Twi, such as ABENA."""
     tokenizers = {}
     for short_name, hf_name in TWI_ONLY_TOKENIZERS.items():
         print(f"Loading {short_name} ({hf_name}) ...")
