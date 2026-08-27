@@ -1,0 +1,12 @@
+language,tokenizer,mean_fertility,mean_tokens_per_char,mean_pct_words_split,n_sentences
+ewe,AfroXLMR,2.608,0.505,70.989,347
+ewe,GhanaTok,1.75,0.341,51.253,347
+ewe,GhanaTok-Unigram,1.349,0.263,22.825,347
+ewe,XLM-R,2.608,0.505,70.989,347
+ewe,mBERT,2.291,0.445,63.866,347
+twi,ABENA,2.419,0.477,72.12,608
+twi,AfroXLMR,2.444,0.482,70.259,608
+twi,GhanaTok,1.656,0.327,48.819,608
+twi,GhanaTok-Unigram,1.251,0.248,17.583,608
+twi,XLM-R,2.444,0.482,70.259,608
+twi,mBERT,2.389,0.471,70.468,608

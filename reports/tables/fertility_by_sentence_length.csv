@@ -1,0 +1,45 @@
+language,tokenizer,length_bucket,tokens_per_word
+ewe,AfroXLMR,short (1-5 words),3.4
+ewe,AfroXLMR,medium (6-10),2.883
+ewe,AfroXLMR,long (11-20),2.606
+ewe,AfroXLMR,very long (21+),2.522
+ewe,GhanaTok,short (1-5 words),2.233
+ewe,GhanaTok,medium (6-10),1.82
+ewe,GhanaTok,long (11-20),1.733
+ewe,GhanaTok,very long (21+),1.739
+ewe,GhanaTok-Unigram,short (1-5 words),1.733
+ewe,GhanaTok-Unigram,medium (6-10),1.452
+ewe,GhanaTok-Unigram,long (11-20),1.328
+ewe,GhanaTok-Unigram,very long (21+),1.334
+ewe,XLM-R,short (1-5 words),3.4
+ewe,XLM-R,medium (6-10),2.883
+ewe,XLM-R,long (11-20),2.606
+ewe,XLM-R,very long (21+),2.522
+ewe,mBERT,short (1-5 words),2.8
+ewe,mBERT,medium (6-10),2.486
+ewe,mBERT,long (11-20),2.303
+ewe,mBERT,very long (21+),2.214
+twi,ABENA,short (1-5 words),2.6
+twi,ABENA,medium (6-10),2.578
+twi,ABENA,long (11-20),2.374
+twi,ABENA,very long (21+),2.335
+twi,AfroXLMR,short (1-5 words),2.7
+twi,AfroXLMR,medium (6-10),2.586
+twi,AfroXLMR,long (11-20),2.409
+twi,AfroXLMR,very long (21+),2.34
+twi,GhanaTok,short (1-5 words),2.1
+twi,GhanaTok,medium (6-10),1.736
+twi,GhanaTok,long (11-20),1.621
+twi,GhanaTok,very long (21+),1.663
+twi,GhanaTok-Unigram,short (1-5 words),1.5
+twi,GhanaTok-Unigram,medium (6-10),1.333
+twi,GhanaTok-Unigram,long (11-20),1.214
+twi,GhanaTok-Unigram,very long (21+),1.266
+twi,XLM-R,short (1-5 words),2.7
+twi,XLM-R,medium (6-10),2.586
+twi,XLM-R,long (11-20),2.409
+twi,XLM-R,very long (21+),2.34
+twi,mBERT,short (1-5 words),2.7
+twi,mBERT,medium (6-10),2.554
+twi,mBERT,long (11-20),2.339
+twi,mBERT,very long (21+),2.312

@@ -17,4 +17,6 @@
 
 **Tokenizer coverage note:** ABENA (`Ghana-NLP/abena-base-akuapem-twi-cased`) is included as a bonus comparison point but was trained only on Twi (Akuapem dialect). It is evaluated on the Twi dataset only and does not appear anywhere in the Ewe results, since it was never trained on Ewe.
 
+**Akuapem check:** 76 of 608 Twi held-out sentences (12.5%) matched a small set of Akuapem spelling markers. ABENA's mean fertility on this flagged subset was 2.377, versus 2.425 on the rest. This is a lightweight, keyword-based check, not a validated dialect classification, and is reported as a directional signal only.
+
 **Licence:** CC BY-NC-SA 4.0 (GhanaNLP), used here for non-commercial academic research only.

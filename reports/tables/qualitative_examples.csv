@@ -1,0 +1,10 @@
+word,language,ghanatok_bpe_tokens,ghanatok_unigram_tokens,xlmr_tokens,abena_tokens,note
+Nkrumah,twi,1,1,3,1,"kept whole by GhanaTok (BPE & Unigram), chopped by XLM-R into [' N', 'k', 'rumah']"
+Mprempren,twi,1,1,3,2,"kept whole by GhanaTok variants, chopped by XLM-R into [' M', 'prem', 'pren'] and ABENA into ['mp', '##rempren']"
+Ahwɛyie,twi,3,3,5,5,retains root/affix boundaries in GhanaTok vs severe character splitting in XLM-R and ABENA
+Esiane,twi,1,1,2,2,frequent Twi connective kept whole by GhanaTok; ABENA and XLM-R both split into subwords
+Bɔɔl,twi,3,1,4,4,"Unigram captures full loanword as single token, whereas BPE, ABENA, and XLM-R split characters"
+Aƒetɔ,ewe,1,1,4,N/A,"contains Ewe special character 'ƒ'; kept whole by GhanaTok, heavily fragmented by XLM-R"
+Dɔwɔnyawo,ewe,2,1,6,N/A,compound Ewe noun segmented cleanly into 1-2 morphemic tokens vs 6 fragmented subwords in XLM-R
+Akantɔwo,ewe,2,1,4,N/A,Ewe plural noun kept compact in GhanaTok vs split into 4 subwords by XLM-R
+Asante,ewe,1,1,2,N/A,kept whole by GhanaTok variants in Ewe context

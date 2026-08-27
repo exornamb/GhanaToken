@@ -1,0 +1,19 @@
+language,tokenizer,mean_fertility,mean_tokens_per_char,mean_pct_words_split,n_sentences,split
+ewe,AfroXLMR,2.625,0.506,71.37,3000,train+val sample
+ewe,XLM-R,2.625,0.506,71.37,3000,train+val sample
+ewe,mBERT,2.303,0.445,64.662,3000,train+val sample
+twi,ABENA,2.402,0.475,71.707,3000,train+val sample
+twi,AfroXLMR,2.438,0.483,70.128,3000,train+val sample
+twi,XLM-R,2.438,0.483,70.128,3000,train+val sample
+twi,mBERT,2.371,0.469,69.958,3000,train+val sample
+ewe,AfroXLMR,2.608,0.505,70.989,347,held-out test
+ewe,GhanaTok,1.75,0.341,51.253,347,held-out test
+ewe,GhanaTok-Unigram,1.349,0.263,22.825,347,held-out test
+ewe,XLM-R,2.608,0.505,70.989,347,held-out test
+ewe,mBERT,2.291,0.445,63.866,347,held-out test
+twi,ABENA,2.419,0.477,72.12,608,held-out test
+twi,AfroXLMR,2.444,0.482,70.259,608,held-out test
+twi,GhanaTok,1.656,0.327,48.819,608,held-out test
+twi,GhanaTok-Unigram,1.251,0.248,17.583,608,held-out test
+twi,XLM-R,2.444,0.482,70.259,608,held-out test
+twi,mBERT,2.389,0.471,70.468,608,held-out test

@@ -1,0 +1,5 @@
+tokenizer,subset,n_sentences,mean_fertility
+ABENA,Akuapem-flagged,76,2.377
+ABENA,not flagged,532,2.425
+GhanaTok,Akuapem-flagged,76,1.663
+GhanaTok,not flagged,532,1.655
