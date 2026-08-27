@@ -19,4 +19,10 @@
 
 **Akuapem check:** 76 of 608 Twi held-out sentences (12.5%) matched a small set of Akuapem spelling markers. ABENA's mean fertility on this flagged subset was 2.377, versus 2.425 on the rest. This is a lightweight, keyword-based check, not a validated dialect classification, and is reported as a directional signal only.
 
-**Licence:** CC BY-NC-SA 4.0 (GhanaNLP), used here for non-commercial academic research only.
+**Downstream Evaluation Data (AfriSenti Twi):**
+- **Source:** AfriSenti-Twitter Dataset (`masakhane/afrisenti`, Twi subset, Muhammad et al., 2023).
+- **Size:** 4,818 total tweets (Official train: 3,481, validation: 388, test: 949).
+- **Labels:** 3-class sentiment (`positive`: 2,277, `negative`: 1,815, `neutral`: 726).
+- **Usage:** Secondary sanity probe using bag-of-tokens Logistic Regression to test representation compactness and downstream stability.
+
+**Licence:** CC BY-NC-SA 4.0 (GhanaNLP Parallel Corpora); CC BY 4.0 (AfriSenti), used here for academic research only.
