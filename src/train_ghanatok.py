@@ -41,6 +41,12 @@ MODEL_DIR = PROJECT_ROOT / "models" / "ghanatok"
 UNIGRAM_MODEL_DIR = PROJECT_ROOT / "models" / "ghanatok_unigram"
 
 
+def get_model_dir(vocab_size: int, algorithm: str) -> Path:
+    """Returns a vocab-size-specific model directory, e.g. models/ghanatok_bpe_16000."""
+    folder_name = f"ghanatok_{algorithm}_{vocab_size}"
+    return PROJECT_ROOT / "models" / folder_name
+
+
 def build_training_corpus(
     output_path: Path = CORPUS_PATH,
     data_dir: Path = PROJECT_ROOT / "data" / "processed",
@@ -63,7 +69,7 @@ def build_training_corpus(
 def train_ghanatok(
     corpus_path: Path = CORPUS_PATH,
     vocab_size: int = VOCAB_SIZE,
-    model_dir: Path = MODEL_DIR,
+    model_dir: Path = None,
 ) -> Path:
     """
     Trains a byte-level BPE tokenizer on the Twi and Ewe training corpus,
@@ -71,6 +77,8 @@ def train_ghanatok(
     to their words) and a seed vocabulary of known Twi and Ewe morphemes
     (so they are guaranteed a slot, not left purely to frequency counts).
     """
+    if model_dir is None:
+        model_dir = get_model_dir(vocab_size, "bpe")
     tokenizer = Tokenizer(BPE(unk_token="<unk>"))
     tokenizer.pre_tokenizer = Sequence([
         Split(pattern=GHANA_PRETOKENIZER_PATTERN, behavior="isolated"),
@@ -99,7 +107,7 @@ def train_ghanatok(
 def train_ghanatok_unigram(
     corpus_path: Path = CORPUS_PATH,
     vocab_size: int = VOCAB_SIZE,
-    model_dir: Path = UNIGRAM_MODEL_DIR,
+    model_dir: Path = None,
 ) -> Path:
     """
     Trains a SentencePiece Unigram tokenizer on the same Twi/Ewe corpus,
@@ -108,6 +116,8 @@ def train_ghanatok_unigram(
     prunes probabilistically, which can segment agglutinative prefixes
     and suffixes differently, sometimes better, than greedy BPE merges.
     """
+    if model_dir is None:
+        model_dir = get_model_dir(vocab_size, "unigram")
     model_dir.mkdir(parents=True, exist_ok=True)
     model_prefix = str(model_dir / "ghanatok_unigram")
 
@@ -118,6 +128,7 @@ def train_ghanatok_unigram(
         model_type="unigram",
         character_coverage=1.0,  # keep every character, including ɛɔɖŋʋƒ
         user_defined_symbols=SEED_MORPHEMES,  # same seed list as GhanaTok-BPE
+        hard_vocab_limit=False,  # allows corpus saturation without hard failure at large target sizes
         unk_id=0,
         pad_id=1,
         bos_id=2,

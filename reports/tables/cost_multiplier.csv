@@ -1,0 +1,12 @@
+language,tokenizer,mean_fertility,multiplier_vs_cheapest_unigram,multiplier_vs_ghanatok_bpe
+ewe,GhanaTok-Unigram,1.349,1.0,0.771
+ewe,GhanaTok,1.75,1.297,1.0
+ewe,mBERT,2.291,1.698,1.309
+ewe,AfroXLMR,2.608,1.933,1.49
+ewe,XLM-R,2.608,1.933,1.49
+twi,GhanaTok-Unigram,1.251,1.0,0.755
+twi,GhanaTok,1.656,1.324,1.0
+twi,mBERT,2.389,1.91,1.443
+twi,ABENA,2.419,1.934,1.461
+twi,AfroXLMR,2.444,1.954,1.476
+twi,XLM-R,2.444,1.954,1.476

@@ -1,0 +1,17 @@
+language,tokenizer,mean_fertility,mean_tokens_per_char,mean_pct_words_split,n_sentences,algorithm,vocab_size
+ewe,BPE-4000,1.846,0.359,55.452,347,BPE,4000
+ewe,BPE-8000,1.75,0.341,51.253,347,BPE,8000
+ewe,BPE-16000,1.712,0.334,49.735,347,BPE,16000
+ewe,BPE-32000,1.712,0.334,49.735,347,BPE,32000
+ewe,Unigram-4000,1.494,0.291,30.003,347,Unigram,4000
+ewe,Unigram-8000,1.349,0.263,22.825,347,Unigram,8000
+ewe,Unigram-16000,1.296,0.253,21.991,347,Unigram,16000
+ewe,Unigram-32000,1.296,0.253,21.991,347,Unigram,32000
+twi,BPE-4000,1.777,0.351,54.616,608,BPE,4000
+twi,BPE-8000,1.656,0.327,48.819,608,BPE,8000
+twi,BPE-16000,1.585,0.313,44.36,608,BPE,16000
+twi,BPE-32000,1.585,0.313,44.36,608,BPE,32000
+twi,Unigram-4000,1.354,0.268,22.75,608,Unigram,4000
+twi,Unigram-8000,1.251,0.248,17.583,608,Unigram,8000
+twi,Unigram-16000,1.212,0.24,16.771,608,Unigram,16000
+twi,Unigram-32000,1.212,0.24,16.771,608,Unigram,32000

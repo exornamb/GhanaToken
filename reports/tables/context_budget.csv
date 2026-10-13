@@ -1,0 +1,12 @@
+language,tokenizer,mean_fertility,max_words_in_4k_window,max_words_in_32k_window,max_words_in_128k_window
+ewe,GhanaTok-Unigram,1.349,2965,23721,94885
+ewe,GhanaTok,1.75,2286,18286,73143
+ewe,mBERT,2.291,1746,13968,55871
+ewe,AfroXLMR,2.608,1534,12270,49080
+ewe,XLM-R,2.608,1534,12270,49080
+twi,GhanaTok-Unigram,1.251,3197,25580,102318
+twi,GhanaTok,1.656,2415,19324,77295
+twi,mBERT,2.389,1674,13395,53579
+twi,ABENA,2.419,1654,13229,52914
+twi,AfroXLMR,2.444,1637,13093,52373
+twi,XLM-R,2.444,1637,13093,52373
