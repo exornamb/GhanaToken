@@ -83,7 +83,7 @@ def train_ghanatok(
     tokenizer.pre_tokenizer = Sequence([
         Split(pattern=GHANA_PRETOKENIZER_PATTERN, behavior="isolated"),
         # use_regex=False stops ByteLevel from running its own default GPT-2
-        # regex on top of ours; it just byte-encodes the pieces we already split.
+        # regex on top of this pattern; it just byte-encodes the pre-split pieces.
         ByteLevel(add_prefix_space=False, use_regex=False),
     ])
     tokenizer.decoder = decoders.ByteLevel()

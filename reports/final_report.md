@@ -10,19 +10,19 @@ The project evaluates three core research questions:
 3. **RQ3**: Does a shared bilingual vocabulary (Twi + Ewe) achieve high tokenization efficiency across both languages within a compact 8,000-token budget?
 
 ### 1.1 Vocabulary Size Selection Methodology
-The 8,000-token vocabulary used for GhanaTok was initially guided by training corpus scale (~15,000 combined parallel sentences). To validate this choice empirically and avoid arbitrary hyperparameter selection, we trained both GhanaTok-BPE and GhanaTok-Unigram across four systematically scaled vocabulary sizes: **4,000, 8,000, 16,000, and 32,000 tokens**. Each model was evaluated on the identical held-out test sets (608 Twi sentences, 347 Ewe sentences) to map the token fertility and fragmentation curves against vocabulary size.
+The 8,000-token vocabulary used for GhanaTok was initially guided by training corpus scale (~15,000 combined parallel sentences). To validate this choice empirically and avoid arbitrary hyperparameter selection, both GhanaTok-BPE and GhanaTok-Unigram were trained across four systematically scaled vocabulary sizes: **4,000, 8,000, 16,000, and 32,000 tokens**. Each model was evaluated on the identical held-out test sets (608 Twi sentences, 347 Ewe sentences) to map the token fertility and fragmentation curves against vocabulary size.
 
 ### 1.2 Statistical Significance Testing Methodology
-To establish whether observed fertility reductions reflect true population-level improvements rather than sample noise, we conducted formal statistical significance testing on the held-out test data:
-- **Paired Comparisons (RQ2)**: Because all tokenizers were evaluated on the identical sentences in identical order, we conducted non-parametric **paired Wilcoxon signed-rank tests** and computed **paired bootstrap 95% confidence intervals** (1,000 resamples with replacement) on both mean fertility differences and percentage fertility reductions.
-- **Multiple Comparisons Correction**: To control the family-wise error rate across the 5 primary RQ2 tests, we applied the **Holm-Bonferroni step-down correction** ($\alpha = 0.05$).
+To establish whether observed fertility reductions reflect true population-level improvements rather than sample noise, formal statistical significance testing was conducted on the held-out test data:
+- **Paired Comparisons (RQ2)**: Because all tokenizers were evaluated on the identical sentences in identical order, non-parametric **paired Wilcoxon signed-rank tests** were conducted and **paired bootstrap 95% confidence intervals** (1,000 resamples with replacement) were computed on both mean fertility differences and percentage fertility reductions.
+- **Multiple Comparisons Correction**: To control the family-wise error rate across the 5 primary RQ2 tests, the **Holm-Bonferroni step-down correction** ($\alpha = 0.05$) was applied.
 - **Cross-Language Comparison (RQ3)**: Because Twi (608 sentences) and Ewe (347 sentences) test sets comprise independent samples, cross-lingual fertility parity was evaluated using the non-parametric **Mann-Whitney U test** alongside an unpaired bootstrap 95% confidence interval on the cross-language difference.
 
 ### 1.3 Latency & Operational Cost Methodology
 To evaluate the runtime and monetary consequences of high fertility ("The African Language Tax"):
-- **Tokenization Speed / Latency**: We measured whole-test-set encoding latency across 5 repeated runs (after 1 warm-up run) using `time.perf_counter()`, computing sentences/sec and characters/sec throughput under identical non-special-token encoding conditions.
-- **API Cost & Multipliers**: We parameterized processing cost per 1M words using a modern lightweight frontier API reference rate of \$0.15 per 1M input tokens (\$0.00015 / 1k tokens, checked September 2026). To ensure durability against price fluctuations, we primarily report **price-independent cost multipliers** relative to GhanaTok.
-- **Context Capacity**: We calculated the maximum usable word capacity within standard LLM context windows (4,000, 32,000, and 128,000 tokens) based on measured per-word fertility.
+- **Tokenization Speed / Latency**: Whole-test-set encoding latency was measured across 5 repeated runs (after 1 warm-up run) using `time.perf_counter()`, computing sentences/sec and characters/sec throughput under identical non-special-token encoding conditions.
+- **API Cost & Multipliers**: Processing cost per 1M words was parameterized using a modern lightweight frontier API reference rate of \$0.15 per 1M input tokens (\$0.00015 / 1k tokens, checked September 2026). To ensure durability against price fluctuations, the evaluation primarily reports **price-independent cost multipliers** relative to GhanaTok.
+- **Context Capacity**: The maximum usable word capacity within standard LLM context windows (4,000, 32,000, and 128,000 tokens) was calculated based on measured per-word fertility.
 
 ---
 
@@ -104,7 +104,7 @@ On the strictly sealed held-out test set (608 Twi sentences, 347 Ewe sentences):
 
 ### 2.8 Vocabulary Size Sweep & Diminishing Returns
 
-To empirically justify the 8,000-token operating point, we trained both GhanaTok-BPE and GhanaTok-Unigram across 4,000, 8,000, 16,000, and 32,000 tokens and evaluated each model on the held-out test sets (608 Twi sentences, 347 Ewe sentences).
+To empirically justify the 8,000-token operating point, both GhanaTok-BPE and GhanaTok-Unigram were trained across 4,000, 8,000, 16,000, and 32,000 tokens and evaluated each model on the held-out test sets (608 Twi sentences, 347 Ewe sentences).
 
 | Language | Algorithm | 4,000 Vocab | 8,000 Vocab | 16,000 Vocab | 32,000 Vocab | 4k $\to$ 8k Gain | 8k $\to$ 16k Gain | 16k $\to$ 32k Gain |
 | :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
@@ -122,7 +122,7 @@ To empirically justify the 8,000-token operating point, we trained both GhanaTok
 
 ### 2.9 Statistical Significance & Confidence Intervals (RQ2 & RQ3)
 
-To confirm that the observed fertility reductions are not attributable to sampling variation, we conducted paired Wilcoxon signed-rank tests and paired bootstrap resampling (1,000 iterations) on the held-out sentences. Across the family of five primary comparisons for RQ2, the Holm-Bonferroni step-down correction was applied ($\alpha = 0.05$).
+To confirm that the observed fertility reductions are not attributable to sampling variation, paired Wilcoxon signed-rank tests and paired bootstrap resampling (1,000 iterations) were conducted on the held-out sentences. Across the family of five primary comparisons for RQ2, the Holm-Bonferroni step-down correction was applied ($\alpha = 0.05$).
 
 #### Paired Significance Test Results (RQ2)
 
@@ -235,18 +235,18 @@ GhanaTok achieved a higher percentage fertility reduction on Twi (30.7%) than on
 
 1. **Sample Sizes & Corpus Domain**: Benchmark calibration and held-out evaluations used 3,000 sentences (calibration) and 608/347 sentences (held-out test), sourced from the GhanaNLP parallel corpora. While cleaned and deduplicated, these texts skew toward conversational dialogues, civic notices, and religious texts, and may not fully represent formal literary registers, technical documentation, or informal social media slang.
 2. **ABENA Asymmetry & Dialect Handling**: ABENA is a monolingual tokenizer trained on Akuapem Twi and could not be evaluated on Ewe. The Twi corpus was not segmented by dialect; the keyword-based Akuapem check (76 flagged sentences) provided a directional probe rather than a validated sociolinguistic dialect classification.
-3. **Vocabulary Size Selection & Scale Ceiling**: While we systematically swept and empirically validated vocabulary scaling across 4k, 8k, 16k, and 32k budgets—confirming that the corpus capacity saturates around ~11k tokens and that 8k captures >95% of achievable compression—orders-of-magnitude larger multilingual budgets (e.g., XLM-R's 250,000 tokens) remain untested and would require a substantially larger training corpus to prevent singleton subword bloat.
+3. **Vocabulary Size Selection & Scale Ceiling**: While vocabulary scaling was systematically swept and empirically validated across 4k, 8k, 16k, and 32k budgets—confirming that the corpus capacity saturates around ~11k tokens and that 8k captures >95% of achievable compression—orders-of-magnitude larger multilingual budgets (e.g., XLM-R's 250,000 tokens) remain untested and would require a substantially larger training corpus to prevent singleton subword bloat.
 4. **Algorithm Scope**: GhanaTok-BPE was the primary proposed model. GhanaTok-Unigram was evaluated as an exploratory secondary comparison recipe on the same corpus and seed vocabulary.
 5. **Downstream Task Scope**: Downstream evaluation (RQ4) was explicitly scoped out of the core research questions. The bonus sentiment probe used a linear bag-of-tokens classifier on short tweets; these findings should not be extrapolated to deep transformer pre-training without full downstream fine-tuning studies.
 6. **Latency Benchmarking Conditions**: Tokenization latency measurements were taken on a single host CPU under normal operating conditions rather than an isolated server environment; these figures should be interpreted as directionally indicative throughput metrics rather than real-time production guarantees.
-7. **Pricing Assumptions**: API processing cost estimates rely on a reference rate of \$0.15/1M tokens, which will vary across providers and time; we emphasize the price-independent cost multipliers for stable architectural comparison.
+7. **Pricing Assumptions**: API processing cost estimates rely on a reference rate of \$0.15/1M tokens, which will vary across providers and time; the study emphasizes the price-independent cost multipliers for stable architectural comparison.
 
 ---
 
 ## 5. Conclusion
 
-This project set out to quantify subword fragmentation in existing multilingual tokenizers on Twi and Ewe and to evaluate whether a compact, bilingual tokenizer could eliminate this inefficiency. We found that standard multilingual tokenizers (mBERT, XLM-R, AfroXLMR) and existing regional models (ABENA) heavily fragment Ghanaian languages, splitting over 70% of words and averaging 2.3–2.6 tokens per word.
+This project set out to quantify subword fragmentation in existing multilingual tokenizers on Twi and Ewe and to evaluate whether a compact, bilingual tokenizer could eliminate this inefficiency. Findings demonstrate that standard multilingual tokenizers (mBERT, XLM-R, AfroXLMR) and existing regional models (ABENA) heavily fragment Ghanaian languages, splitting over 70% of words and averaging 2.3–2.6 tokens per word.
 
-By introducing **GhanaTok**—an 8,000-vocabulary bilingual tokenizer combining dialect-aware pre-tokenization with seed morpheme injection—we reduced token fertility to **1.656 tokens/word on Twi (30.7% reduction, $p < 0.001$)** and **1.750 tokens/word on Ewe (23.6% reduction, $p < 0.001$)** on held-out test data. Furthermore, exploratory SentencePiece Unigram training demonstrated additional potential, lowering fertility to **1.251 tokens/word ($p < 0.001$)**.
+By introducing **GhanaTok**—an 8,000-vocabulary bilingual tokenizer combining dialect-aware pre-tokenization with seed morpheme injection—token fertility is reduced to **1.656 tokens/word on Twi (30.7% reduction, $p < 0.001$)** and **1.750 tokens/word on Ewe (23.6% reduction, $p < 0.001$)** on held-out test data. Furthermore, exploratory SentencePiece Unigram training demonstrated additional potential, lowering fertility to **1.251 tokens/word ($p < 0.001$)**.
 
 The most valuable next step for this work is to pre-train a small transformer language model (e.g., 100M parameters) using GhanaTok tokenization to directly measure downstream perplexity, training compute savings, and generative performance on Ghanaian language tasks.
